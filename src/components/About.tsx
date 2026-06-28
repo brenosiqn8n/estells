@@ -36,25 +36,15 @@ export function About() {
             <GoldButton label={t.about.cta} href="#contacto" />
           </Reveal>
           <Reveal delay={120} className="mt-8">
-            <img
-              src="/images/coworking-1.jpg"
-              alt="Espacio de trabajo y estudio en Estells Centre d'Estudis, Alginet"
-              width={1600}
-              height={900}
-              loading="lazy"
-              className="aspect-video w-full rounded-xl sm:rounded-2xl object-cover"
-            />
-          </Reveal>
-          <Reveal delay={160} className="mt-4 sm:mt-5">
             <HoursCard />
           </Reveal>
         </div>
 
         {/* DESKTOP */}
-        <div className="hidden lg:grid grid-cols-12 items-center gap-8 xl:gap-10 px-5 sm:px-8 lg:px-12">
+        <div className="hidden lg:grid grid-cols-12 items-center gap-10 xl:gap-16 px-5 sm:px-8 lg:px-12">
           {/* Text */}
-          <Reveal delay={80} className="col-span-4 self-center">
-            <p className="font-body text-[18px] xl:text-[20px] leading-[1.6] text-ink">
+          <Reveal delay={80} className="col-span-7 self-center">
+            <p className="font-body text-[19px] xl:text-[22px] leading-[1.6] text-ink">
               {t.about.paragraphLines[0]} {t.about.paragraphLines[1]}{" "}
               {t.about.paragraphLines[2]}
             </p>
@@ -64,20 +54,8 @@ export function About() {
           </Reveal>
 
           {/* Hours card */}
-          <Reveal delay={140} className="col-span-4 self-stretch">
+          <Reveal delay={160} className="col-span-5">
             <HoursCard />
-          </Reveal>
-
-          {/* Coworking — matches hours card height */}
-          <Reveal delay={200} className="col-span-4 self-stretch">
-            <img
-              src="/images/coworking-1.jpg"
-              alt="Espacio de trabajo y estudio en Estells Centre d'Estudis, Alginet"
-              width={1600}
-              height={900}
-              loading="lazy"
-              className="h-full min-h-0 w-full rounded-2xl object-cover"
-            />
           </Reveal>
         </div>
 
