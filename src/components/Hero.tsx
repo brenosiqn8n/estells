@@ -1,8 +1,18 @@
-import { Fragment, Suspense, lazy, useEffect, useState } from "react";
+import { Suspense, lazy, useEffect, useState } from "react";
 import { useI18n } from "../i18n/I18nProvider";
 import { EASE, GoldButton, GhostButton } from "./ui/primitives";
 
 const ShaderBackground = lazy(() => import("./ShaderBackground"));
+
+// Centre + team imagery for the bottom strip.
+const STRIP_IMAGES = [
+  { src: "/images/team/lara.jpg", alt: "Profesora de Estells en clase" },
+  { src: "/images/coworking-1.jpg", alt: "Aula y espacio de estudio de Estells, Alginet" },
+  { src: "/images/team/ricard.jpg", alt: "Profesor de idiomas de Estells" },
+  { src: "/images/team/virginia.jpg", alt: "Profesora de matemáticas de Estells" },
+  { src: "/images/team/frances-mari.jpg", alt: "Francesc Marí, director de Estells" },
+  { src: "/images/team/salva.jpg", alt: "Profesor de física de Estells" },
+];
 
 export function Hero() {
   const { t } = useI18n();
@@ -23,61 +33,73 @@ export function Hero() {
       id="inicio"
       className="relative flex min-h-screen flex-col overflow-hidden bg-sand"
     >
-      {/* Shader overlay (golden), lazy-loaded */}
-      <div className="absolute inset-0 z-10 pointer-events-none">
+      {/* Shader (golden), lazy-loaded */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
         <Suspense fallback={<div className="h-full w-full bg-sand" />}>
           <ShaderBackground />
         </Suspense>
       </div>
 
-      <div className="flex-1" />
+      {/* Centered content */}
+      <div className="relative z-20 flex flex-1 items-center justify-center px-5 pt-24 pb-10 sm:pt-28">
+        <div className="mx-auto w-full max-w-3xl text-center">
+          <p
+            style={delay(60)}
+            className={`mb-5 font-mono text-[12px] sm:text-[13px] uppercase tracking-[0.18em] text-muted ${reveal}`}
+          >
+            {t.hero.kicker}
+          </p>
 
-      {/* Hero content */}
-      <div className="relative z-20 mx-auto w-full max-w-[1440px] px-5 sm:px-8 lg:px-12 pb-14 sm:pb-16 lg:pb-20">
-        <p
-          style={delay(60)}
-          className={`mb-5 sm:mb-8 font-mono text-[12px] sm:text-[13px] uppercase tracking-[0.18em] text-muted ${reveal}`}
-        >
-          {t.hero.kicker}
-        </p>
-        <h1 className="font-heading font-medium leading-[1.08] tracking-[-0.03em] text-ink text-[clamp(1.75rem,7vw,4.2rem)] sm:text-[clamp(2.5rem,5vw,4.2rem)]">
-          {t.hero.titleLines.map((line, i) => (
-            <span key={i} className="block overflow-hidden">
-              <span
-                style={delay(140 + i * 90)}
-                className={`block ${reveal}`}
-              >
-                {line}
+          <h1 className="font-heading font-medium leading-[1.05] tracking-[-0.03em] text-ink text-[clamp(2.2rem,8vw,5rem)]">
+            {t.hero.titleLines.map((line, i) => (
+              <span key={i} className="block overflow-hidden">
+                <span style={delay(140 + i * 90)} className={`block ${reveal}`}>
+                  {line}
+                </span>
               </span>
-            </span>
-          ))}
-        </h1>
+            ))}
+          </h1>
 
-        <p
-          style={delay(440)}
-          className={`mt-6 max-w-xl font-body text-[16px] sm:text-[18px] leading-[1.6] text-muted ${reveal}`}
-        >
-          {t.hero.subtitle}
-        </p>
+          <p
+            style={delay(440)}
+            className={`mx-auto mt-6 max-w-xl font-body text-[17px] sm:text-[19px] leading-[1.6] text-muted ${reveal}`}
+          >
+            {t.hero.subtitle}
+          </p>
 
-        <div
-          style={delay(540)}
-          className={`mt-8 sm:mt-10 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5 ${reveal}`}
-        >
-          <GoldButton label={t.hero.ctaPrimary} href="#contacto" />
-          <GhostButton label={t.hero.ctaSecondary} href="#servicios" />
+          <div
+            style={delay(540)}
+            className={`mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-5 ${reveal}`}
+          >
+            <GoldButton label={t.hero.ctaPrimary} href="#contacto" />
+            <GhostButton label={t.hero.ctaSecondary} href="#servicios" />
+          </div>
         </div>
+      </div>
 
-        <div
-          style={delay(640)}
-          className={`mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-[12px] uppercase tracking-wide text-muted ${reveal}`}
-        >
-          {t.hero.chips.map((chip, i) => (
-            <Fragment key={chip}>
-              {i > 0 && <span className="h-1 w-1 rounded-full bg-gold" />}
-              <span>{chip}</span>
-            </Fragment>
-          ))}
+      {/* Bottom image strip (marquee) */}
+      <div
+        style={delay(720)}
+        className={`relative z-20 pb-4 sm:pb-6 ${reveal}`}
+        aria-hidden="true"
+      >
+        <div className="overflow-hidden">
+          <div className="marquee-track flex w-max gap-4 px-2 sm:gap-5">
+            {[...STRIP_IMAGES, ...STRIP_IMAGES].map((img, i) => (
+              <div
+                key={i}
+                className="aspect-[4/3] h-[clamp(180px,30vh,320px)] shrink-0 overflow-hidden rounded-2xl bg-sand-alt"
+              >
+                <img
+                  src={img.src}
+                  alt={i < STRIP_IMAGES.length ? img.alt : ""}
+                  loading="lazy"
+                  decoding="async"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

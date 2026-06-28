@@ -69,9 +69,30 @@ footer[id] {
     inset 0 -1px 1px rgba(255, 255, 255, 0.1);
 }
 
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marquee 50s linear infinite;
+  will-change: transform;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  .marquee-track {
+    animation: none;
   }
   *,
   *::before,
