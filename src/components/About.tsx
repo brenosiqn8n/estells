@@ -68,15 +68,15 @@ export function About() {
             <HoursCard />
           </Reveal>
 
-          {/* Coworking — landscape, dropped for stagger */}
-          <Reveal delay={200} className="col-span-4 self-end translate-y-8">
+          {/* Coworking — matches hours card height */}
+          <Reveal delay={200} className="col-span-4 self-stretch">
             <img
               src="/images/coworking-1.jpg"
               alt="Espacio de trabajo y estudio en Estells Centre d'Estudis, Alginet"
               width={1600}
               height={900}
               loading="lazy"
-              className="aspect-[4/5] w-full rounded-2xl object-cover"
+              className="h-full min-h-0 w-full rounded-2xl object-cover"
             />
           </Reveal>
         </div>
