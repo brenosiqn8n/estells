@@ -7,9 +7,11 @@ const ShaderBackground = lazy(() => import("./ShaderBackground"));
 // Centre + team imagery for the bottom strip.
 const STRIP_IMAGES = [
   { src: "/images/team/lara.jpg", alt: "Profesora de Estells en clase" },
-  { src: "/images/coworking-1.jpg", alt: "Aula y espacio de estudio de Estells, Alginet" },
+  { src: "/images/strip/study-1.jpg", alt: "Libros, lápices y material de estudio" },
   { src: "/images/team/ricard.jpg", alt: "Profesor de idiomas de Estells" },
+  { src: "/images/strip/study-2.jpg", alt: "Alumno escribiendo y tomando apuntes" },
   { src: "/images/team/virginia.jpg", alt: "Profesora de matemáticas de Estells" },
+  { src: "/images/strip/study-3.jpg", alt: "Libros de estudio apilados" },
   { src: "/images/team/frances-mari.jpg", alt: "Francesc Marí, director de Estells" },
   { src: "/images/team/salva.jpg", alt: "Profesor de física de Estells" },
 ];
