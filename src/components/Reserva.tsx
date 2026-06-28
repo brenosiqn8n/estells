@@ -58,7 +58,7 @@ export function Reserva() {
   };
 
   return (
-    <section id="contacto" className="bg-sand-alt py-16 sm:py-20 lg:py-28">
+    <section id="contacto" className="bg-white py-16 sm:py-20 lg:py-28">
       <div className="mx-auto w-full max-w-[1440px] px-5 sm:px-8 lg:px-12">
         <div className="grid gap-10 lg:grid-cols-[1fr_1.3fr] lg:gap-16">
           {/* Left: pitch */}

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Star, Quote } from "lucide-react";
+import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
 import { useI18n } from "../i18n/I18nProvider";
 import {
   REVIEWS,
@@ -58,6 +58,8 @@ export function Reviews() {
   const r = t.reviews;
   const [active, setActive] = useState(0);
   const hasReviews = REVIEWS.length > 0;
+  const count = REVIEWS.length;
+  const go = (i: number) => setActive((i + count) % count);
 
   useEffect(() => {
     if (REVIEWS.length <= 1) return;
@@ -69,7 +71,7 @@ export function Reviews() {
   }, []);
 
   return (
-    <section id="resenas" className="overflow-hidden bg-white py-16 sm:py-20 lg:py-28">
+    <section id="resenas" className="overflow-hidden bg-sand-alt py-16 sm:py-20 lg:py-28">
       <div className="mx-auto grid w-full max-w-[1440px] grid-cols-1 gap-12 px-5 sm:px-8 lg:grid-cols-2 lg:gap-20 lg:px-12">
         {/* Left: heading + CTAs */}
         <div className="flex flex-col justify-center">
@@ -96,20 +98,40 @@ export function Reviews() {
             <GhostButton label={r.ctaWrite} href={GOOGLE_WRITE_REVIEW_URL} />
           </Reveal>
 
-          {hasReviews && (
-            <Reveal delay={220} className="mt-8 flex items-center gap-3">
-              {REVIEWS.map((_, i) => (
+          {hasReviews && count > 1 && (
+            <Reveal delay={220} className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3">
+              <div className="flex items-center gap-2">
                 <button
-                  key={i}
                   type="button"
-                  onClick={() => setActive(i)}
-                  aria-label={`Reseña ${i + 1}`}
-                  aria-current={active === i}
-                  className={`h-2.5 rounded-full transition-all duration-300 ${EASE} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink ${
-                    active === i ? "w-10 bg-gold" : "w-2.5 bg-line hover:bg-faint"
-                  }`}
-                />
-              ))}
+                  onClick={() => go(active - 1)}
+                  aria-label="Reseña anterior"
+                  className={`flex h-10 w-10 items-center justify-center rounded-full border border-line bg-white text-ink transition-colors duration-300 ${EASE} hover:border-ink hover:bg-ink hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2`}
+                >
+                  <ChevronLeft size={18} />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => go(active + 1)}
+                  aria-label="Reseña siguiente"
+                  className={`flex h-10 w-10 items-center justify-center rounded-full border border-line bg-white text-ink transition-colors duration-300 ${EASE} hover:border-ink hover:bg-ink hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2`}
+                >
+                  <ChevronRight size={18} />
+                </button>
+              </div>
+              <div className="flex items-center gap-2">
+                {REVIEWS.map((_, i) => (
+                  <button
+                    key={i}
+                    type="button"
+                    onClick={() => setActive(i)}
+                    aria-label={`Reseña ${i + 1}`}
+                    aria-current={active === i}
+                    className={`h-2.5 rounded-full transition-all duration-300 ${EASE} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink ${
+                      active === i ? "w-10 bg-gold" : "w-2.5 bg-line hover:bg-faint"
+                    }`}
+                  />
+                ))}
+              </div>
             </Reveal>
           )}
         </div>
@@ -129,7 +151,7 @@ export function Reviews() {
                   }`}
                   style={{ zIndex: active === i ? 10 : 0 }}
                 >
-                  <div className="flex h-full flex-col rounded-2xl border border-line bg-sand p-8 sm:p-10">
+                  <div className="flex h-full flex-col rounded-2xl border border-line bg-white p-8 sm:p-10">
                     <div className="mb-6 flex items-center justify-between">
                       <Stars rating={review.rating} />
                       <GoogleMark size={22} />
@@ -164,7 +186,7 @@ export function Reviews() {
               ))}
             </div>
           ) : (
-            <div className="flex h-full min-h-[280px] flex-col justify-center rounded-2xl border border-dashed border-line bg-sand p-8 sm:p-10">
+            <div className="flex h-full min-h-[280px] flex-col justify-center rounded-2xl border border-dashed border-line bg-white p-8 sm:p-10">
               <div className="mb-5 flex items-center gap-3">
                 <GoogleMark size={26} />
                 <Stars rating={5} />
