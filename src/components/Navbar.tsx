@@ -11,6 +11,7 @@ const SPY_IDS = [
   "proceso",
   "servicios",
   "faq",
+  "resenas",
   "contacto",
 ];
 

@@ -26,7 +26,10 @@ Centro de estudios en **Alginet (Valencia)**. Apoyo educativo cercano, de confia
 - `App.tsx` — composición + skip-link. `main.tsx` — envuelto en `I18nProvider`.
 
 ## Secciones (orden)
-Hero `#inicio` → About/Equipo `#centro`/`#equipo` → Ventajas `#ventajas` (6 razones, 01–06) → Proceso `#proceso` (3 pasos con conector) → Servicios `#servicios` (4 cards + detalle asignaturas + nota intensivos) → FAQ `#faq` (acordeón accesible aria-expanded/controls) → Reserva `#contacto` (form front-end + WhatsApp) → Footer (mapa Google embed + datos).
+Hero `#inicio` → About/Equipo `#centro`/`#equipo` (1) → Ventajas `#ventajas` (2) → Proceso `#proceso` (3) → Servicios `#servicios` (4) → FAQ `#faq` (5) → **Reseñas Google `#resenas` (6)** → Reserva `#contacto` (7) → Footer.
+
+## Reseñas (Google)
+Carrusel auto-rotativo (6s) adaptado a marca — **sin framer-motion/shadcn/radix** (reescrito con tokens propios + Reveal). Datos reales en `src/data/reviews.ts` (`REVIEWS` array, **vacío con TODO**: pegar reseñas literales de Google, no inventar). Si vacío, muestra empty-state con CTA. Marca Google "G" en SVG inline + estrellas doradas. CTAs a ficha Google (`GOOGLE_REVIEWS_URL`) y escribir reseña (`GOOGLE_WRITE_REVIEW_URL`) — ambos **placeholder TODO** (faltan URL/place_id reales).
 
 ## Formulario (Reserva)
 Solo front-end. **Selector de intención** (segmented): "Reserva tu plaza" / "Contacta con nosotros" — cambia título, subtítulo, asunto del mail y campos (en modo contacto se ocultan edad/asignatura/nivel/fecha; solo nombre/teléfono/email obligatorios). Validación nativa (`checkValidity`/`reportValidity`), estados idle/sending/success, `aria-live`. Al enviar abre `mailto:estellscentre@gmail.com` con cuerpo prerrellenado. **Sin backend real.** Icono WhatsApp en verde marca (#25D366).

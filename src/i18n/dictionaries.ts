@@ -9,6 +9,7 @@ export interface Dict {
     ventajas: string;
     proceso: string;
     faq: string;
+    reviews: string;
     contacto: string;
     reserva: string;
     status: string;
@@ -64,6 +65,16 @@ export interface Dict {
     badge: string;
     title: string;
     items: { q: string; a: string }[];
+  };
+  reviews: {
+    badge: string;
+    title: string;
+    subtitle: string;
+    ratingNote: string;
+    ctaView: string;
+    ctaWrite: string;
+    emptyTitle: string;
+    emptyText: string;
   };
   reserva: {
     badge: string;
@@ -131,6 +142,7 @@ export const es: Dict = {
     ventajas: "Ventajas",
     proceso: "Proceso",
     faq: "FAQ",
+    reviews: "Reseñas",
     contacto: "Contacto",
     reserva: "Reserva tu plaza",
     status: "Plazas abiertas · Curso 2026",
@@ -298,6 +310,18 @@ export const es: Dict = {
       },
     ],
   },
+  reviews: {
+    badge: "Reseñas en Google",
+    title: "Lo que opinan las familias.",
+    subtitle:
+      "Valoraciones reales de alumnos y familias en nuestra ficha de Google. Sin filtros.",
+    ratingNote: "Valoraciones verificadas en Google",
+    ctaView: "Ver reseñas en Google",
+    ctaWrite: "Escribe una reseña",
+    emptyTitle: "Reseñas reales, sin inventar.",
+    emptyText:
+      "Estamos recopilando las opiniones de Google. Mientras tanto, puedes leerlas o dejar la tuya directamente en nuestra ficha.",
+  },
   reserva: {
     badge: "Reserva tu plaza",
     modes: { reserva: "Reserva tu plaza", contacto: "Contacta con nosotros" },
@@ -359,6 +383,7 @@ export const va: Dict = {
     ventajas: "Avantatges",
     proceso: "Procés",
     faq: "FAQ",
+    reviews: "Ressenyes",
     contacto: "Contacte",
     reserva: "Reserva la teua plaça",
     status: "Places obertes · Curs 2026",
@@ -525,6 +550,18 @@ export const va: Dict = {
         a: "Contacta'ns, fem una valoració inicial de l'alumne i, si encaixa, reservem la seua plaça per a començar com més prompte millor.",
       },
     ],
+  },
+  reviews: {
+    badge: "Ressenyes a Google",
+    title: "Què opinen les famílies.",
+    subtitle:
+      "Valoracions reals d'alumnes i famílies a la nostra fitxa de Google. Sense filtres.",
+    ratingNote: "Valoracions verificades a Google",
+    ctaView: "Veure ressenyes a Google",
+    ctaWrite: "Escriu una ressenya",
+    emptyTitle: "Ressenyes reals, sense inventar.",
+    emptyText:
+      "Estem recopilant les opinions de Google. Mentrestant, pots llegir-les o deixar la teua directament a la nostra fitxa.",
   },
   reserva: {
     badge: "Reserva la teua plaça",

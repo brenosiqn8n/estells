@@ -8,6 +8,7 @@ import { Advantages } from "./components/Advantages";
 import { Process } from "./components/Process";
 import { Services } from "./components/Services";
 import { Faq } from "./components/Faq";
+import { Reviews } from "./components/Reviews";
 import { Reserva } from "./components/Reserva";
 import { Footer } from "./components/Footer";
 
@@ -34,6 +35,7 @@ export default function App() {
         <Process />
         <Services />
         <Faq />
+        <Reviews />
         <Reserva />
       </main>
 

@@ -101,6 +101,7 @@ export function Footer() {
                 { id: "proceso", label: t.nav.proceso },
                 { id: "equipo", label: t.nav.equipo },
                 { id: "faq", label: t.nav.faq },
+                { id: "resenas", label: t.nav.reviews },
                 { id: "contacto", label: t.nav.contacto },
               ].map((link) => (
                 <li key={link.id}>

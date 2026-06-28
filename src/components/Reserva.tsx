@@ -64,7 +64,7 @@ export function Reserva() {
           {/* Left: pitch */}
           <div>
             <Reveal className="mb-6 sm:mb-8">
-              <SectionBadge n="6" label={t.reserva.badge} />
+              <SectionBadge n="7" label={t.reserva.badge} />
             </Reveal>
 
             {/* Intent toggle */}

@@ -22,6 +22,7 @@ export function MobileMenu({
     { id: "centro", label: t.nav.centro },
     { id: "equipo", label: t.nav.equipo },
     { id: "faq", label: t.nav.faq },
+    { id: "resenas", label: t.nav.reviews },
     { id: "contacto", label: t.nav.contacto },
   ];
 
